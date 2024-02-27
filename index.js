@@ -1,20 +1,19 @@
-const express = require("express")
+const express = require('express')
+const cors = require('cors')
+require('dotenv').config()
+let PORT = process.env.PORT;
+const userRoutes = require('./routes/user.route')
+const adminRoutes = require('./routes/admin.route')
+
 const app = express()
-const cors = require("cors")
-require("dotenv").config()
-let PORT = process.env.PORT
-const userRouter = require("./routes/user.route")
-
-
-// dotenv.config()
 app.use(cors())
-app.use(express.urlencoded({ extended: true, limit: "50mb"}))
-app.use(express.json({ limit: "50mb"}))
-app.use("/", userRouter)
+app.use(express.urlencoded({extended:true}))
+app.use(express.json())
+app.use('/', userRoutes)
+app.use('/', adminRoutes)
 
 
 
-
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT} `);
-});
+app.listen(PORT,()=>{
+    console.log(` Server running on PORT: ${PORT}`);
+})
