@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 // const URI = process.env.URL
-const URI = "mongodb+srv://Adebayozz:Peterzz1994@cluster0.72sjynx.mongodb.net/?retryWrites=true&w=majority"
+const URI = "mongodb+srv://ogunladeadebayopeter:Peterzz1994@cluster0.pk4j5fd.mongodb.net/bestway?retryWrites=true&w=majority&appName=Cluster0"
 
 mongoose.connect(URI)
 .then((response)=>{

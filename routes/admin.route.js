@@ -1,9 +1,10 @@
 const express = require('express')
-const adminRouter = express.Router()
-const {adminRegister, adminLogin} = require('../controllers/admin.controller')
+const router = express.Router()
+const {adminRegister, adminLogin, verifyToken} = require('../controllers/admin.controller')
 
 
-adminRouter.post('/admin/register', adminRegister)
-adminRouter.post('/admin/login', adminLogin)
+router.post('/admin/register', adminRegister)
+router.post('/admin/login', adminLogin)
+router.post('/admin/verifyToken', verifyToken)
 
-module.exports = adminRouter
+module.exports = router 
