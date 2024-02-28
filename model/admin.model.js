@@ -17,7 +17,7 @@ let adminSchema = mongoose.Schema({
     lastName:String,
     email:{type: String, required:true, unique:true},
     password:{type:String, required:true,},
-    matricNumber: { type: String, unique: true }
+    adminId: { type: String, unique: true }
 })
 
 adminSchema.pre("save", function(next){

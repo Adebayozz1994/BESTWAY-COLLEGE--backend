@@ -22,11 +22,11 @@ const generateUniqueNumber = () => {
 
 const adminRegister = (req, res) => {
     console.log(req.body);
-    const matricNumber = generateUniqueNumber();
+    const adminId = generateUniqueNumber();
     const staff = new FirstModel(req.body);
     const { email } = req.body
-    staff.matricNumber = matricNumber;
-    sendUniqueNumberToEmail(email, matricNumber)
+    staff.adminId = adminId;
+    sendUniqueNumberToEmail(email, adminId)
     staff.save()
         .then(() => {
             console.log("admin saved successfully");
@@ -39,13 +39,13 @@ const adminRegister = (req, res) => {
 };
 
 
-function sendUniqueNumberToEmail(email, matricNumber) {
+function sendUniqueNumberToEmail(email, adminId) {
     return new Promise((resolve, reject) => {
         // Example implementation using nodemailer
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                admin: 'ogunladeadebayopeter@gmail.com',
+                user: 'ogunladeadebayopeter@gmail.com',
                 pass: 'osqw clph ssqu jvxd'
             }
         });
@@ -54,7 +54,7 @@ function sendUniqueNumberToEmail(email, matricNumber) {
             from: 'ogunladeadebayopeter@gmail.com',
             to: email,
             subject: 'Bestway',
-            text: `Your unique number is: ${matricNumber}`
+            text: `Your unique number is: ${adminId}`
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
@@ -69,9 +69,9 @@ function sendUniqueNumberToEmail(email, matricNumber) {
 
 
 const adminLogin = (req, res) => {
-    const { matricNumber, password } = req.body;
+    const { adminId, password } = req.body;
 
-    FirstModel.findOne({ matricNumber })
+    FirstModel.findOne({ adminId })
         .then((staff) => {
             if (!staff) {
                 console.log("admin not found");
@@ -88,7 +88,7 @@ const adminLogin = (req, res) => {
                     console.log("Incorrect password");
                     return res.status(401).json({ message: "Incorrect password" });
                 }else{
-                    const token = jwt.sign({ matricNumber }, secret, { expiresIn: '1h' });
+                    const token = jwt.sign({ adminId }, secret, { expiresIn: '1h' });
                     console.log("admin signed in successfully");
                     res.send({ message: "admin signed in successfully", status: true, admin: staff, token:token});
                 }
