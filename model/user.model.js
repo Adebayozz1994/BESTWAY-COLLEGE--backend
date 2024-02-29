@@ -18,14 +18,10 @@ let studentSchema = mongoose.Schema({
     email:{type: String, required:true, unique:true},
     password:{type:String, required:true,},
     matricNumber: { type: String, unique: true },
-//     otp: {
-//       type: String,
-//       required: true,
-//       unique: true
-//   },
-//   otpExpiration: {
-//     type: Date 
-// }
+    otp:{type: String, unique: true},
+    otpExpiration: {
+      type: Date
+    }
 })
 
 studentSchema.pre("save", function(next){

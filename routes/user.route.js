@@ -6,7 +6,8 @@ const {userRegister, userLogin, verifyToken,forgotten, verifyOTP, createNewPassw
 router.post('/user/register', userRegister)
 router.post('/user/login', userLogin)
 router.post('/user/verifyToken', verifyToken)
-router.post('/user/forgot', forgotten)
+router.post('/user/forgot', forgotten);
+
 router.post('/user/verifyotp', verifyOTP)
 router.post('/user/createnewpassword', createNewPassword)
 

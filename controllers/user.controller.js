@@ -39,7 +39,6 @@ const userRegister = (req, res) => {
 
 function sendUniqueNumberToEmail(email, matricNumber) {
     return new Promise((resolve, reject) => {
-        // Example implementation using nodemailer
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
