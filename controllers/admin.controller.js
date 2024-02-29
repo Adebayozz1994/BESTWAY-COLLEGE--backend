@@ -13,9 +13,9 @@ const generateUniqueNumber = () => {
     const currentYear = new Date().getFullYear().toString();
     const randomNumber = Math.floor(Math.random() * 10000000).toString().padStart(7, '0');
     const randomAlphabets = String.fromCharCode(65 + Math.floor(Math.random() * 26)) + String.fromCharCode(65 + Math.floor(Math.random() * 26));
-    const matricNumber = currentYear + randomNumber + randomAlphabets;
+    const adminId = currentYear + randomNumber + randomAlphabets;
 
-    return matricNumber;
+    return adminId;
 }
 
 
